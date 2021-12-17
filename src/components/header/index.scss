@@ -1,0 +1,16 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 96px;
+
+  .search-bar-container {
+    width: 695px;
+    height: 48px;
+  }
+  .shopping-cart-container {
+    height: 48px;
+    width: 120px;
+  }
+}

@@ -1,0 +1,42 @@
+@import "../../style/color.scss";
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  background-color: $gray;
+  padding: 0 27px;
+
+  .search-icon-container {
+    height: 18px;
+    margin-right: 11.5px;
+  }
+
+  .input-container {
+    width: 100%;
+    height: 100%;
+
+    .search-input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+      background-color: initial;
+      color: $black;
+
+      &::-webkit-input-placeholder {
+        color: $dark-gray;
+      }
+
+      &::-ms-input-placeholder {
+        color: $dark-gray;
+      }
+
+      &::placeholder {
+        color: $dark-gray;
+      }
+    }
+  }
+}
