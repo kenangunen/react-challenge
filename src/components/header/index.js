@@ -4,6 +4,7 @@ import ShoppingCart from "../shoppingCart";
 import "./index.scss";
 
 function Header() {
+ 
   return (
     <header>
       <div className="logo-container">

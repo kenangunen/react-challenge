@@ -1,4 +1,3 @@
-import Logo from "../../assets/logo";
 import "./index.scss";
 
 function ShoppingCart() {

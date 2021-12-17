@@ -1,12 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-import Header from './components/header';
+import "./App.css";
+import Header from "./components/header";
+import { ProductContext } from "./contexts/ProductContext";
+import { productDataBridge } from "./dataBridge/productDataBridge";
 
 function App() {
+  let productData = [];
+  
+  productDataBridge().then(function (response) {
+    productData.push(...response);
+  });
+
   return (
-    <div className="container">
-      <Header/>
-    </div>
+    <ProductContext.Provider value={productData}>
+      <div className="container">
+        <Header />
+      </div>
+    </ProductContext.Provider>
   );
 }
 
