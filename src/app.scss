@@ -1,0 +1,23 @@
+.container {
+  width: 100%;
+  padding: 0 80px;
+
+  .content-wrapper{
+    width: 100%;
+    padding-top: 24px;
+  }
+
+  .second-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+
+    .filter-container{
+      width: 224px;
+      border: 1px solid gray;
+    }
+   
+  }
+}

@@ -1,0 +1,23 @@
+@import "../../style/color.scss";
+.search-wrapper{
+  
+  .search-header{
+    font-weight: 700;
+    font-size: 28px;
+    color: $black;
+    
+    margin-bottom: 10px;
+  }
+
+  .search-detail{
+    font-weight: 400;
+    font-size:15px;
+    .label{
+      color: $dark-gray;
+    }
+    search-word {
+      color: $black;
+    }
+  }
+
+}
