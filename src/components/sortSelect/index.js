@@ -11,19 +11,23 @@ function SortSelect() {
   const products = useContext(ProductContext);
   const selectRef = useRef();
 
-  const onChange = (e) => {
+  //works when selecting from the select box
+  const onSelect = (e) => {
     const filterType = "sortFilter";
     const filterKey = e.target.value;
     const items = [...sortOptions];
 
+    //get filteredData base on filterType and filterKey
     const data = getFilteredData(products, filterType, filterKey);
     setFilteredData(data);
 
+    //deactivate all selections.
     const activedItemIndex = items.findIndex((item) => item.active);
     if (activedItemIndex > -1) {
       items[activedItemIndex].active = false;
     }    
-   
+
+    //set selected sort option for filter list.
     const index = items.findIndex((option) => option.key === filterKey);
     items[index].active = true;
     setSortOptions(items);
@@ -41,7 +45,7 @@ function SortSelect() {
 
   return (
     <div className="select-container">
-      <select ref={selectRef} className="app-button" onChange={(e) => onChange(e)}>
+      <select ref={selectRef} className="app-button" onChange={(e) => onSelect(e)}>
         <option value="0">Sırala</option>
         {sortOptions.map((option, index) => (
           <option value={option.key} key={index}>
