@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { shoppingCartBridge } from "../dataBridge/shoppingCartDataBridge";
 
 const ProductAddedToCartContext = createContext();
 
@@ -8,9 +9,15 @@ const ProductAddedToCartProvider = ({ children }) => {
   const values = {
     addedProduct,
     setAddedProduct,
-  };
+  };  
 
-  console.log(addedProduct)
+  //get initial shopping cart data
+  useEffect(() => {    
+    shoppingCartBridge().then(function (response) {
+      setAddedProduct(response); 
+    });
+  },[]);  
+
 
   return (
     <ProductAddedToCartContext.Provider value={values}>

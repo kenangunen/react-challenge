@@ -8,7 +8,7 @@ const ProductProvider = ({ children }) => {
 
     useEffect(()=>{
         productDataBridge().then(function (response) {           
-            setInitialData(response)           
+            setInitialData(response)   
         });    
     },[]);
    
