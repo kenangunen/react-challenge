@@ -11,7 +11,6 @@ const ProductProvider = ({ children }) => {
             setInitialData(response)           
         });    
     },[]);
-
    
   return (
     <ProductContext.Provider value={initialData}>

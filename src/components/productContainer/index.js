@@ -1,24 +1,25 @@
-import "./index.scss";
-import { ProductContext } from "../../contexts/ProductContext";
-import { FilterOptionsContext } from "../../contexts/FilterOptionsContext";
 import React, { useContext, useEffect, useState } from "react";
-import ProductCard from "../productCard";
+import { FilterOptionsContext } from "../../contexts/FilterOptionsContext";
+import { FilteredDataContext } from "../../contexts/FilteredDataContext";
+import { ProductContext } from "../../contexts/ProductContext";
 import { getFilteredData } from "../../utils/filterData";
+import ProductCard from "../productCard";
+import "./index.scss";
 
 function ProductContainer() {
   const products = useContext(ProductContext);
-  const [filteredProductData, setFilteredProductData] = useState([]);
+  const { filteredData, setFilteredData } = useContext(FilteredDataContext);
   const { filterOptions } = useContext(FilterOptionsContext);
   const { filterType, filterKey } = filterOptions;
 
   useEffect(() => {
     const data = getFilteredData(products, filterType, filterKey);
-    setFilteredProductData(data);
+    setFilteredData(data);
   }, [filterKey]);
 
   const getData = () => {
-    if (filteredProductData.length > 0) {
-      return filteredProductData;
+    if (filteredData.length > 0) {
+      return filteredData;
     } else {
       return products;
     }

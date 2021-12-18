@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import "./index.scss";
 
 function ProductCard(props) {
@@ -39,3 +40,7 @@ function ProductCard(props) {
 }
 
 export default ProductCard;
+
+ProductCard.propTypes = {
+  product: PropTypes.object.isRequired
+};

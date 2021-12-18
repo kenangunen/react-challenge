@@ -5,6 +5,7 @@ import SearchResult from "./components/searchResult";
 import { ProductProvider } from "./contexts/ProductContext";
 import { FilterOptionsProvider } from "./contexts/FilterOptionsContext";
 import { FilteredDataProvider } from "./contexts/FilteredDataContext";
+import FilterContainer from "./components/filterContainer";
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
                 <SearchResult />
               </section>
               <section className="second-section">
-                <div className="filter-container"></div>
+                <div className="filter-container">
+                  <FilterContainer />
+                </div>
                 <ProductContainer />
               </section>
             </div>

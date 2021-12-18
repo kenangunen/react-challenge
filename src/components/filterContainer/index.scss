@@ -1,0 +1,33 @@
+@import "../../style/color.scss";
+
+.option-container {
+  margin-top: 24px;
+
+  .filter-header {
+    font-weight: 500;
+    font-size: 16px;
+    color: $black;
+    margin-bottom: 20px;
+    line-height: 24px;
+  }
+
+  .options {
+    li {
+      list-style: none;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 24px;
+      color: $black;
+      cursor: pointer;
+
+      &:hover {
+        color: $orange;
+      }
+      
+    }
+
+    .active{
+      color: $orange;
+    }
+  }
+}
