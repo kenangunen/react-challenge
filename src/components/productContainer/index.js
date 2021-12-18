@@ -12,22 +12,21 @@ function ProductContainer() {
   const { filterOptions } = useContext(FilterOptionsContext);
   const { filterType, filterKey } = filterOptions;
 
-  useEffect(() => {
-    const data = getFilteredData(products, filterType, filterKey);
-    setFilteredData(data);
-  }, [filterKey]);
 
-  const getData = () => {
-    if (filteredData.length > 0) {
-      return filteredData;
-    } else {
-      return products;
-    }
-  };
+
+  //initial data is set to filteredData
+  useEffect(() => {
+    setFilteredData(products); 
+  }, [products])
+
+  useEffect(() => {
+    const data = getFilteredData(filteredData, filterType, filterKey);
+    setFilteredData(data);
+  }, [filterKey, filterType]);
 
   return (
     <div className="product-container">
-      {getData().map((product) => {
+      {filteredData.map((product) => {
         return <ProductCard product={product} key={product.productId} />;
       })}
     </div>

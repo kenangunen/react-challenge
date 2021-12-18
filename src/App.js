@@ -6,7 +6,7 @@ import { ProductProvider } from "./contexts/ProductContext";
 import { FilterOptionsProvider } from "./contexts/FilterOptionsContext";
 import { FilteredDataProvider } from "./contexts/FilteredDataContext";
 import { SortOptionsProvider } from "./contexts/SortOptionsContext";
-
+import { ProductAddedToCartProvider } from "./contexts/ProductAddedToCartContext";
 import FilterContainer from "./components/filterContainer";
 
 function App() {
@@ -15,20 +15,22 @@ function App() {
       <FilterOptionsProvider>
         <FilteredDataProvider>
           <SortOptionsProvider>
-            <div className="container">
-              <Header />
-              <div className="content-wrapper">
-                <section className="top-section">
-                  <SearchResult />
-                </section>
-                <section className="down-section">
-                  <div className="filter-container">
-                    <FilterContainer />
-                  </div>
-                  <ProductContainer />
-                </section>
+            <ProductAddedToCartProvider>
+              <div className="container">
+                <Header />
+                <div className="content-wrapper">
+                  <section className="top-section">
+                    <SearchResult />
+                  </section>
+                  <section className="down-section">
+                    <div className="filter-container">
+                      <FilterContainer />
+                    </div>
+                    <ProductContainer />
+                  </section>
+                </div>
               </div>
-            </div>
+            </ProductAddedToCartProvider>
           </SortOptionsProvider>
         </FilteredDataProvider>
       </FilterOptionsProvider>

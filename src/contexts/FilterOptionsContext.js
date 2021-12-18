@@ -7,7 +7,6 @@ const FilterOptionsProvider = ({ children }) => {
     filterType: null,
     filterKey: null,
   });
-
   const values = {
     filterOptions,
     setFilterOptions,

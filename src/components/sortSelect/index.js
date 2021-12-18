@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useRef } from "react";
-import { ProductContext } from "../../contexts/ProductContext";
 import { SortOptionsContext } from "../../contexts/SortOptionsContext";
-import { FilteredDataContext } from "../../contexts/FilteredDataContext";
-import { getFilteredData } from "../../utils/filterData";
+import { FilterOptionsContext } from "../../contexts/FilterOptionsContext";
+
 import "./index.scss";
 
 function SortSelect() {
   const { sortOptions, setSortOptions } = useContext(SortOptionsContext);
-  const { setFilteredData } = useContext(FilteredDataContext);
-  const products = useContext(ProductContext);
+  const { setFilterOptions } = useContext(FilterOptionsContext);
+
   const selectRef = useRef();
 
   //works when selecting from the select box
@@ -17,9 +16,8 @@ function SortSelect() {
     const filterKey = e.target.value;
     const items = [...sortOptions];
 
-    //get filteredData base on filterType and filterKey
-    const data = getFilteredData(products, filterType, filterKey);
-    setFilteredData(data);
+    // setFilterOptions used for filter data in productContainer
+    setFilterOptions({ filterType, filterKey });
 
     //deactivate all selections.
     const activedItemIndex = items.findIndex((item) => item.active);

@@ -1,29 +1,36 @@
-import React, { useContext, useEffect } from "react";
-import { ProductContext } from "../../contexts/ProductContext";
+import React, { useContext, useEffect, useState } from "react";
 import { FilteredDataContext } from "../../contexts/FilteredDataContext";
 import { SortOptionsContext } from "../../contexts/SortOptionsContext";
-
-import { getFieldUniqueValue, getFilteredData } from "../../utils/filterData";
+import { FilterOptionsContext } from "../../contexts/FilterOptionsContext";
+import { getFieldUniqueValue } from "../../utils/filterData";
 import "./index.scss";
 
 function FilterContainer() {
-  const products = useContext(ProductContext);
-  const { setFilteredData } = useContext(FilteredDataContext);
+  const [activeClass, setActiveClass] = useState();
+  const { setFilterOptions } = useContext(FilterOptionsContext);
+  const { filteredData } = useContext(FilteredDataContext);
   const { sortOptions, setSortOptions } = useContext(SortOptionsContext);
 
   let brandList = [];
   let colorList = [];
 
   //fill the brandList and colorList
-  products.map((product) => {
+  filteredData.map((product) => {
     const { brand, color } = product;
     brandList.push(brand);
     colorList.push(color);
-  });
-
+  });  
+ 
   //get uniqu poductlist base on brandList and colorList. Required for filter options.
   const uniqueList = getFieldUniqueValue({ brandList, colorList });
   const { uniqueBrandsWithCount, uniqueColorsWithCount } = uniqueList;
+
+  useEffect(()=> {
+    if(activeClass){    
+      activeClass.classList.add("active");
+    }
+   
+  },[activeClass])
 
   //works when clicking on filters
   const setFilter = (e, filterType, filterKey) => {
@@ -31,13 +38,11 @@ function FilterContainer() {
     const activeOptionElement = [...document.getElementsByClassName("active")];
     activeOptionElement[0]?.classList.remove("active");
 
-    //add active class to selected option.
-    const selectedOptionElement = e.target;
-    selectedOptionElement.classList.add("active");
 
-    //get filteredData base on filterType and filterKey
-    const data = getFilteredData(products, filterType, filterKey);
-    setFilteredData(data);
+    setActiveClass(e.target)
+
+    // setFilterOptions used for filter data in productContainer
+    setFilterOptions({ filterType, filterKey });
 
     if (filterType === "sortFilter") {
       const items = [...sortOptions];
