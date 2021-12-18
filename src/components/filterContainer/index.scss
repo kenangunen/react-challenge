@@ -18,10 +18,11 @@
       font-size: 14px;
       line-height: 24px;
       color: $black;
-      cursor: pointer;
+     
 
       &:hover {
         color: $orange;
+        cursor: pointer;
       }
       
     }

@@ -6,7 +6,7 @@ function ShoppingCart() {
       <div className="cart-item-count">
         <span>4</span>
       </div>
-      <button className="cart-button">Sepetim</button>
+      <button className="app-button">Sepetim</button>
     </div>
   );
 }

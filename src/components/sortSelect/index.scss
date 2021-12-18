@@ -1,0 +1,13 @@
+@import "../../style/color.scss";
+.select-container {
+  width: 120px;
+  height: 48px;
+
+  select {  
+    padding: 0 15px;
+    background: url("../../assets/arrow.png") right center no-repeat;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+}
