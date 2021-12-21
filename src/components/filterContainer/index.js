@@ -19,18 +19,17 @@ function FilterContainer() {
     const { brand, color } = product;
     brandList.push(brand);
     colorList.push(color);
-  });  
- 
+  });
+
   //get uniqu poductlist base on brandList and colorList. Required for filter options.
   const uniqueList = getFieldUniqueValue({ brandList, colorList });
   const { uniqueBrandsWithCount, uniqueColorsWithCount } = uniqueList;
 
-  useEffect(()=> {
-    if(activeClass){    
+  useEffect(() => {
+    if (activeClass) {
       activeClass.classList.add("active");
     }
-   
-  },[activeClass])
+  }, [activeClass]);
 
   //works when clicking on filters
   const setFilter = (e, filterType, filterKey) => {
@@ -38,8 +37,7 @@ function FilterContainer() {
     const activeOptionElement = [...document.getElementsByClassName("active")];
     activeOptionElement[0]?.classList.remove("active");
 
-
-    setActiveClass(e.target)
+    setActiveClass(e.target);
 
     // setFilterOptions used for filter data in productContainer
     setFilterOptions({ filterType, filterKey });
@@ -61,20 +59,19 @@ function FilterContainer() {
   };
 
   //works when selected from select box
-  useEffect(()=>{
-    const option = sortOptions.filter(option => option.active);  
+  useEffect(() => {
+    const option = sortOptions.filter((option) => option.active);
 
-    if(option.length > 0){
-    //all active class remove
-    const activeElement = [...document.getElementsByClassName("active")];
-    activeElement[0]?.classList.remove("active");
+    if (option.length > 0) {
+      //all active class remove
+      const activeElement = [...document.getElementsByClassName("active")];
+      activeElement[0]?.classList.remove("active");
 
-    //add active class to selected option.
-    const activeOptionElement = document.getElementById(option[0].key);
-    activeOptionElement.classList.add("active");
+      //add active class to selected option.
+      const activeOptionElement = document.getElementById(option[0].key);
+      activeOptionElement.classList.add("active");
     }
-   
-  },[sortOptions])
+  }, [sortOptions]);
 
   return (
     <>

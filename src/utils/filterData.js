@@ -1,4 +1,3 @@
-
 //This function is used for all filtering operations in the application.
 export const getFilteredData = (products, filterType, filterKey) => {
   switch (filterType) {

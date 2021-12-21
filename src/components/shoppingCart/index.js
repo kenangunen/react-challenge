@@ -20,13 +20,13 @@ function ShoppingCart() {
     );
   };
 
-  const removeProduct = (productId, recordId) => {
-    removeData(recordId);
+  const removeProduct = (recordId, productId) => {
+    removeData(recordId); //remove database
 
     const itemList = [...addedProduct];
 
     const index = itemList.find((item) => item.productId === productId);
-    itemList.splice(index, 1);
+    itemList.splice(index, 1); //remove state
     setAddedProduct(itemList);
   };
 
@@ -49,15 +49,15 @@ function ShoppingCart() {
             return (
               <div key={index} className="added-product">
                 <div className="img-container">
-                  <img src={product.url}></img>
+                  <img src={product.url ? product.url : product.fields.url}></img>
                 </div>
 
                 <div className="name-button-container">
-                  <p>{product.name}</p>
+                  <p>{product.name ? product.name : product.fields.name}</p>
                   <div className="button-container">
                     <button
                       onClick={() =>
-                        removeProduct(product.id, product.recordId)
+                        removeProduct(product.id, product.fields.recordId)
                       }
                     >
                       Kaldır

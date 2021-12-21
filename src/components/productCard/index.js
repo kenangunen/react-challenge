@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import { ProductAddedToCartContext } from "../../contexts/ProductAddedToCartContext";
 import { addData } from "../../dataBridge/shoppingCartDataBridge";
 import PropTypes from "prop-types";
@@ -6,6 +6,9 @@ import "./index.scss";
 
 function ProductCard(props) {
   const { product } = props;
+  const [activeBtnContinerClass, setActiveBtnContainerClass] = useState("active");
+  const [activeBtnClass, setActiveBtnClass] = useState("orange");
+
   const { addedProduct, setAddedProduct } = useContext(
     ProductAddedToCartContext
   );
@@ -18,11 +21,8 @@ function ProductCard(props) {
   const discountedPrice = price - price * discount;
 
   const addToCard = async (name, productPhotoUrl, productId) => {
-    //TODO class isimlerini state bağla
-    btnContainer.current.classList.remove("active");
-    btnContainer.current.classList.add("passive");
-    btn.current.classList.remove("orange");
-    btn.current.classList.add("gray");
+    setActiveBtnContainerClass("passive");
+    setActiveBtnClass("gray");
     setButtonText("Bu ürünü sepete ekleyemezsiniz");
 
     const recordId = await addData(productId, name, productPhotoUrl); //add to database
@@ -42,10 +42,10 @@ function ProductCard(props) {
         <div className="product-name">
           <p>{name}</p>
         </div>
-        <div ref={btnContainer} className="button-container active">
+        <div className={`button-container ${activeBtnContinerClass}`}>
           <button
             ref={btn}
-            className="add-to-cart-button orange"
+            className={`${activeBtnClass} add-to-cart-button `}
             onClick={(e) => addToCard(name, productPhotoUrl, productId)}
           >
             {buttonText}

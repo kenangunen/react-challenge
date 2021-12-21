@@ -6,6 +6,7 @@ const ProductContext = createContext();
 const ProductProvider = ({ children }) => {
     const [initialData, setInitialData ] = useState([]) 
 
+    //get initial product data from airTable
     useEffect(()=>{
         productDataBridge().then(function (response) {           
             setInitialData(response)   
