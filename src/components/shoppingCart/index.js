@@ -11,8 +11,6 @@ function ShoppingCart() {
     ProductAddedToCartContext
   );
 
-  // console.log("***", addedProduct)
-
   const setClassNames = () => {
     setCartContainer(
       cartContainerClass === "visible" ? "invisible" : "visible"

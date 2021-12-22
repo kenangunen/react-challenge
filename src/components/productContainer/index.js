@@ -20,7 +20,7 @@ function ProductContainer() {
   }, [products])
 
   useEffect(() => {
-    const data = getFilteredData(products, filterType, filterKey);
+    const data = getFilteredData(filteredData, filterType, filterKey);
     setFilteredData(data);
   }, [filterKey, filterType]);
 

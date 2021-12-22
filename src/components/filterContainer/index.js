@@ -15,7 +15,7 @@ function FilterContainer() {
   let colorList = [];
 
   //fill the brandList and colorList
-  filteredData.map((product) => {
+  filteredData.forEach((product) => {
     const { brand, color } = product;
     brandList.push(brand);
     colorList.push(color);
