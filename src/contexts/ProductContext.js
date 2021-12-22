@@ -8,7 +8,8 @@ const ProductProvider = ({ children }) => {
 
     //get initial product data from airTable
     useEffect(()=>{
-        productDataBridge().then(function (response) {           
+        productDataBridge().then(function (response) {   
+          console.log(response)        
             setInitialData(response)   
         });    
     },[]);

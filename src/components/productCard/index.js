@@ -6,7 +6,8 @@ import "./index.scss";
 
 function ProductCard(props) {
   const { product } = props;
-  const [activeBtnContinerClass, setActiveBtnContainerClass] = useState("active");
+  const [activeBtnContinerClass, setActiveBtnContainerClass] =
+    useState("active");
   const [activeBtnClass, setActiveBtnClass] = useState("orange");
 
   const { addedProduct, setAddedProduct } = useContext(
@@ -27,10 +28,15 @@ function ProductCard(props) {
 
     const recordId = await addData(productId, name, productPhotoUrl); //add to database
 
-    setAddedProduct([
-      { name, url: productPhotoUrl, productId, recordId },
-      ...addedProduct,
-    ]);
+    setAddedProduct(
+      [
+        {
+          fields: { name, url: productPhotoUrl, productId },
+          id: recordId,
+        },
+      ],
+      ...addedProduct
+    );
   };
 
   return (

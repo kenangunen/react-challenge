@@ -11,6 +11,8 @@ function ShoppingCart() {
     ProductAddedToCartContext
   );
 
+  // console.log("***", addedProduct)
+
   const setClassNames = () => {
     setCartContainer(
       cartContainerClass === "visible" ? "invisible" : "visible"
@@ -20,7 +22,7 @@ function ShoppingCart() {
     );
   };
 
-  const removeProduct = (recordId, productId) => {
+  const removeProduct = (productId, recordId) => {
     removeData(recordId); //remove database
 
     const itemList = [...addedProduct];
@@ -49,15 +51,15 @@ function ShoppingCart() {
             return (
               <div key={index} className="added-product">
                 <div className="img-container">
-                  <img src={product.url ? product.url : product.fields.url}></img>
+                  <img src={product.fields.url}></img>
                 </div>
 
                 <div className="name-button-container">
-                  <p>{product.name ? product.name : product.fields.name}</p>
+                  <p>{product.fields.name}</p>
                   <div className="button-container">
                     <button
                       onClick={() =>
-                        removeProduct(product.id, product.fields.recordId)
+                        removeProduct(product.fields.productId, product.id)
                       }
                     >
                       Kaldır
